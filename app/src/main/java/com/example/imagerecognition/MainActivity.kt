@@ -180,7 +180,4 @@ class MainActivity : AppCompatActivity() {
             getCameraPermission()
         }
     }
-
-
-
 }
