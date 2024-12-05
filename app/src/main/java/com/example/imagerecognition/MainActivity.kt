@@ -40,17 +40,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var imageView:ImageView
     lateinit var bitmap:Bitmap
     lateinit var model:AutoModel1
-    lateinit var imageProcessor:ImageProcessor
+    lateinit var imageProcessor: ImageProcessor
     val paint=Paint()
-    val colors = listOf<Int>(
-        android.graphics.Color.BLUE,
-        android.graphics.Color.GREEN,
-        android.graphics.Color.RED,
-        android.graphics.Color.CYAN,
-        android.graphics.Color.DKGRAY,
-        android.graphics.Color.MAGENTA,
-        android.graphics.Color.YELLOW,
-        android.graphics.Color.BLACK
+    val colors = listOf(
+        Color.BLUE,
+        Color.GREEN,
+        Color.RED,
+        Color.CYAN,
+        Color.DKGRAY,
+        Color.MAGENTA,
+        Color.YELLOW,
+        Color.BLACK
     )
     lateinit var labels:List<String>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         getCameraPermission()
         labels= FileUtil.loadLabels(this,"labels.txt")
         val handlerThread=HandlerThread("videoThread")
-            handlerThread.start()
+        handlerThread.start()
         handler= Handler(handlerThread.looper)
         imageView=findViewById(R.id.imageView)
         textureView=findViewById(R.id.textureView)
@@ -138,9 +138,9 @@ class MainActivity : AppCompatActivity() {
         CameraManager.openCamera(CameraManager.cameraIdList[0],object :CameraDevice.StateCallback(){
             override fun onOpened(p0: CameraDevice) {
                 cameraDevice=p0
-                var surfaceTexture=textureView.surfaceTexture
-                var surface=Surface(surfaceTexture)
-                var captureRequest=cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+                val surfaceTexture=textureView.surfaceTexture
+                val surface=Surface(surfaceTexture)
+                val captureRequest=cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
                 captureRequest.addTarget(surface)
                 cameraDevice.createCaptureSession(listOf(surface),object:CameraCaptureSession.StateCallback(){
                     override fun onConfigured(p0: CameraCaptureSession) {
